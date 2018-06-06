@@ -1,0 +1,38 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+.commentTemplate {
+  visibility: hidden;
+}
+
+#submitComment { margin-left: 61%; }
+
+.user-comment {
+  margin-left: 15%;
+  margin-bottom: 1%;
+  border-bottom: 1px solid;
+  width: 63%;
+}
+
+.user-comment p {
+  font-size: 12px;
+  padding: 0;
+  margin-bottom: 2px;
+}
+
+#userCommentForm {
+  margin: 7% 0 2% 15%; 
+}
