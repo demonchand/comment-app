@@ -1,6 +1,5 @@
 class UserCommentsController < ApplicationController
   def index
-    # @user_comments = UserComment.all
     @user_comments = UserComment.comments
     @user_comment = UserComment.new
   end
