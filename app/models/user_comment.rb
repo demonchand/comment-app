@@ -1,12 +1,11 @@
 class UserComment < ApplicationRecord
-
   def self.comments
     comments = []
-    UserComment.all.order("id desc").each do |comment|
-      last_updated = comments.select { |x| x.ip_address == comment.ip_address }.last
-      # Configured it for 10 sec
-      comments << comment if last_updated.nil? or (last_updated.created_at - comment.created_at).to_i.abs > 10
+    UserComment.all.order('created_at desc').group_by { |x| x.ip_address }.each do |k, v|
+      user_comments = [v.first]
+      v.each { |comment| user_comments << comment if (user_comments.last.created_at - comment.created_at).to_i.abs > 10 }
+      comments << user_comments
     end
-    comments
+    comments.flatten
   end
 end
