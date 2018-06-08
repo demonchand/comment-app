@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">
-    <%= form_with(model: @user_comment, local: true, id: "userCommentForm") do |form| %>
+    <%= form_with(model: @user_comment, remote: true, id: "userCommentForm") do |form| %>
       <div class="field">
         <%= form.text_area :body, cols: "60", rows: "4", label: false %>
       </div>
 
       <div class="actions">
-        <button type="button" id="submitComment" class="btn btn-success">Post</button>
+        <%= form.submit 'Post', class: 'btn btn-success', id: "submitComment" %>
       </div>
     <% end %>
     
@@ -15,24 +15,6 @@
   <div class="col-md-2"></div>
 </div>
 
-<div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-8">
-    <div class="user-comment-section">
-      <% @user_comments.each do |comment| %>
-        <div class="user-comment">
-          <p>Comment from IP <%= comment.ip_address %> at <%= comment.created_at.in_time_zone("Chennai").strftime("%Y-%m-%d %H:%M")  %></p>
-          <p><%= sanitize comment.body, tags: %w(b i) %></p>
-        </div>
-      <% end %>
-    </div>
-  </div>
-  <div class="col-md-2"></div>
-</div>
-
-<div class="commentTemplate">
-  <div class="user-comment">
-    <p></p>
-    <p></p>
-  </div>
+<div class="comment-content">
+  <%= render partial: "comments", locals: {comments: @user_comments} %>
 </div>

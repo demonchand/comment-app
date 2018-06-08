@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="user-comment-section">
+      <% comments.each do |comment| %>
+        <div class="user-comment">
+          <p>Comment from IP <%= comment.ip_address %> at <%= comment.created_at.in_time_zone("Chennai").strftime("%Y-%m-%d %H:%M")  %></p>
+          <p><%= sanitize comment.body, tags: %w(b i) %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
